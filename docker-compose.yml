@@ -1,0 +1,16 @@
+services:
+  whatsapp-bot:
+    build: .
+    container_name: whatsapp-gemini-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - wwebjs_auth:/app/.wwebjs_auth
+      - wwebjs_cache:/app/.wwebjs_cache
+    tty: true
+    stdin_open: true
+
+volumes:
+  wwebjs_auth:
+  wwebjs_cache:
