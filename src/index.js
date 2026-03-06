@@ -5,8 +5,17 @@ const { getGeminiResponse } = require("./lib/gemini");
 const client = new Client({
   authStrategy: new LocalAuth(),
   puppeteer: {
-    executablePath: "/data/data/com.termux/files/usr/bin/chromium",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    executablePath: "/data/data/com.termux/files/usr/bin/chromium-browser",
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-gpu",
+      "--disable-dev-shm-usage",
+      "--no-first-run",
+      "--no-zygote",
+      "--single-process",
+      "--disable-extensions",
+    ],
   },
 });
 
