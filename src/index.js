@@ -37,7 +37,8 @@ client.on("ready", () => {
 });
 
 client.on("message", async (message) => {
-  // Ignore non-text messages (images, stickers, etc.)
+  // Ignore status broadcasts and non-text messages
+  if (message.from === "status@broadcast") return;
   if (message.body.length === 0) return;
 
   const senderId = message.from;
