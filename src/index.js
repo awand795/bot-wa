@@ -2,17 +2,12 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const { getGeminiResponse } = require("./lib/gemini");
 
-const puppeteerConfig = {
-  args: ["--no-sandbox", "--disable-setuid-sandbox"],
-};
-
-if (process.env.PUPPETEER_EXECUTABLE_PATH) {
-  puppeteerConfig.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
-}
-
 const client = new Client({
   authStrategy: new LocalAuth(),
-  puppeteer: puppeteerConfig,
+  puppeteer: {
+    executablePath: "/data/data/com.termux/files/usr/bin/chromium",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  },
 });
 
 client.on("qr", (qr) => {
