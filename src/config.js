@@ -6,7 +6,7 @@ dotenv.config({ path: path.resolve(__dirname, "../.env") });
 const config = {
   geminiApiKey: process.env.GEMINI_API_KEY,
   maxHistoryLength: 10,
-  geminiModel: "gemini-2.0-flash",
+  geminiModel: "gemini-2.5-flash",
 };
 
 if (!config.geminiApiKey || config.geminiApiKey === "your_gemini_api_key_here") {
